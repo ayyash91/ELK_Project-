@@ -38,14 +38,12 @@ Load balancing ensures that the application will be highly available, in additio
 
 <strong>What aspect of security do load balancers protect?</strong> 
          
-Load Balancer distributed the traffic efficiency across the network which helps in mitigating denial of service attacks (DDoS). 
-
-
-Load Balancer also had health probe function. This function check regularly to make sure the machine behind the load balancer is functioning before sending traffic to them. If one machine had an issue then the load balancer start sending the traffic to the other machine. 
+* Load Balancer distributed the traffic efficiency across the network which helps in mitigating denial of service attacks (DDoS). 
+* Load Balancer also had health probe function. This function check regularly to make sure the machine behind the load balancer is functioning before sending traffic to them. If one machine had an issue then the load balancer start sending the traffic to the other machine. 
 
 <strong>What is the advantage of a jump box?</strong>
 
-Jump box prevents VMs to be exposed to the public network and restrict access to the machines securely only to the administrator from the Jump box
+* Jump box prevents VMs to be exposed to the public network and restrict access to the machines securely only to the administrator from the Jump box
 
 
  
@@ -57,12 +55,12 @@ Integrating an ELK server allows users to easily monitor the vulnerable VMs for 
 
 <strong>What does Filebeat watch for?</strong>
 
-Filebeat collect file system and log files and monitors any change that occurs to the system
+* Filebeat collect file system and log files and monitors any change that occurs to the system
 
 
 <strong>What does Metricbeat record?</strong>
 
-Collect metrics from your systems and services and send them to Elasticsearch for visualization and chart generating. 
+* Collect metrics from your systems and services and send them to Elasticsearch for visualization and chart generating. 
 
 
 The configuration details of each machine may be found below.
@@ -81,19 +79,24 @@ The configuration details of each machine may be found below.
 ## Access Policies
 
 
-The machines on the internal network are not exposed to the public Internet.
+* The machines on the internal network are not exposed to the public Internet.
+
+* Only the Jump Box Provisioner machine can accept connections from the Internet. 
+
+* Access to this machine is only allowed from the following IP addresses: 93.85.243.49
 
 
-Only the Jump Box Provisioner machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses: 93.85.243.49
+* Machines within the network can only be accessed by the Jump-box-Provisioner.
 
 
-Machines within the network can only be accessed by the Jump-box-Provisioner.
+<strong>Which machine did you allow to access your ELK VM?</strong>
+
+* Jump Box
 
 
-Which machine did you allow to access your ELK VM? Jump Box
+<strong>What was its IP address?</strong> 
 
-
-What was its IP address? 13.68.194.231
+* 13.68.194.231
 
 
 
