@@ -20,7 +20,7 @@
 
   - name: setup filebeat
     command: filebeat setup
-	
+    
   - name: start filebeat service
     command: service filebeat start
 
