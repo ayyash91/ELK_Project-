@@ -117,6 +117,13 @@ A summary of the access policies in place can be found in the table below.
 
 
 
+| Name  | Public Accessible  | Allowed IP Address  |
+|---|---|---|
+|  Jump Box | Yes via Port 22  | 93.85.243.49  |
+| Web-1  |  No | 10.0.0.4  |
+|  Web-2 | No  |  10.0.0.4 |
+| ELK  | Yes via port 5601  |  93.85.243.49 |
+| Load Balancer  | Yes via port 80  | 93.85.243.49  |
 
 
 	
