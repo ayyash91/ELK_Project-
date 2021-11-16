@@ -67,13 +67,12 @@ The configuration details of each machine may be found below.
 
 
 
-|  name    | Function                    | IP Address       | Operation System                 |
-| Jump box | Gateway / Docker / Ansible  | 10.0.0.4         | Linux Ubuntu 18.04.01 |
-| Web-1    | Web Server used to run DVWA  |   |   |
-| Web-2    |   |   |   |
-| Elk  |   |   |   |
-|   |   |   |   |
-|   |   |   |   |
+|  Name | Function  | IP Address  | Operation system  |
+|---|---|---|---|
+| Jump box  | Gateway / Ansible  | 10.0.0.4  | Linux Ubuntu 18.04.01  |
+| Web-1  | Web Server used to run DVWA  |  10.0.0.7 | Linux Ubuntu 18.04.01  |
+| Web-2  |  Web Server used to run DVWA | 10.0.0.8  |  Linux Ubuntu 18.04.01 |
+| Elk  | Run Elk Container and Kibana  | 10.1.0.4  | Linux Ubuntu 18.04.01  |
 
 
 ## Access Policies
@@ -118,24 +117,9 @@ A summary of the access policies in place can be found in the table below.
 
 
 
-Name
-	Publicly Accessible
-	Allowed IP Addresses
-	Jump Box
-	Yes ( via port 22 ) 
-	93.85.243.49
-	Web-1
-	No
-	10.0.0.4
-	Web-2
-	No
-	10.0.0.4
-	Elk
-	Yes ( via port 5601 )
-	93.85.243.49
-	Load Balancer 
-	Yes ( via port 80 ) 
-	93.85.243.49
+
+
+	
 	
 
 
@@ -164,7 +148,7 @@ The playbook implements the following tasks:
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
 
-![TODO: Update the path with the name of your screenshot of docker ps output](Images/docker_ps_output.png)
+<img src="/images/docker-ELK.png" >
 
 
 
@@ -193,13 +177,10 @@ Filebeat collects log information about the file system and which file has been 
 
 
 ## Using the Playbook
-In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned:
+In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned. SSH into the control node and follow the steps below:
 
 
-SSH into the control node and follow the steps below:
-
-
-*  Copy the filebeat-config.yml file to /etc/ansible/files/filebeat-config.yml
+*  Copy the `filebeat-config.yml` file to `/etc/ansible/files/filebeat-config.yml`
 
 
 * Update the filebeat-config.yml to include host “10.1.0.4.9200” with username “elastic” and password “changeme” and setup.kibana host to “10.1.0.4:5601” 
@@ -208,65 +189,65 @@ SSH into the control node and follow the steps below:
 * Run the playbook, and navigate to http://23.99.89.109:5601/app/kibana#/home/tutorial/systemLogs and click on check data from the browser to check that the installation worked as expected.
 
 
-Answer the following questions to fill in the blanks:
 
 
-Which file is the playbook?
+<strong>Which file is the playbook?</strong>
 
 
-* filebeat-playbook.yml
+* `filebeat-playbook.yml`
 
 
- Where do you copy it?
+ <strong>Where do you copy it?</strong>
 
 
-* /etc/ansible/roles/filebeat-playbook.yml
-
-
+* `/etc/ansible/roles/filebeat-playbook.yml`
 
 
 
 
 
 
-Which file do you update to make Ansible run the playbook on a specific machine?
 
 
-* /etc/ansible/hosts 
+<strong>Which file do you update to make Ansible run the playbook on a specific machine?</strong>
 
 
-How do I specify which machine to install the ELK server on versus which to install Filebeat on?
+* `/etc/ansible/hosts` 
+
+
+<strong>How do I specify which machine to install the ELK server on versus which to install Filebeat on?</strong>
 
 
 * By adding the private ip address of web-1 and web-2 to the file host under [webservers]
 
 
-* And adding the private ip address of the elk vm under [elk] 
+* Adding the private ip address of the elk vm under [elk] 
 
 
-Which URL do you navigate to in order to check that the ELK server is running?
+<storng>Which URL do you navigate to in order to check that the ELK server is running?</strong>
 
 
-http://23.99.89.109:5601/app/kibana
+* http://23.99.89.109:5601/app/kibana
 
 
-_As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc
+command we use to download, update and run playbook:
 
 
-* To download playbook we use the command:
-curl https://gist.githubusercontent.com/slape/5cc350109583af6cbe577bbcc0710c93/raw/eca603b72586fbe148c11f9c87bf96a63cb25760/Filebeat > /etc/ansible/filebeat-config.yml
+To download playbook we use the command:
+
+`curl https://gist.githubusercontent.com/slape/5cc350109583af6cbe577bbcc0710c93/raw/eca603b72586fbe148c11f9c87bf96a63cb25760/Filebeat > /etc/ansible/filebeat-config.yml`
 	
 
 
 
-* To update files we use the nano command 
+To update files we use the nano command 
 
 
-nano hosts 
-nano playbook_file.yml
+* `nano hosts` 
+* `nano playbook_file.yml`
 
 
-* To run the playbook we use the command: 
+To run the playbook we use the command: 
 
 
-ansible-playbook playbook_file.yml
+* `ansible-playbook playbook_file.yml`
